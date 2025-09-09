@@ -43,6 +43,9 @@ skinparam lineType $ARCH_LINETYPE
 <style>
     archimate {
         RoundCorner $ARCH_SHARP_CORNER
+        .other-grouping {
+            LineStyle 8-5
+        }
     }
     arrow {
         LineColor $ARCH_RELATIONSHIP_LINECOLOR
