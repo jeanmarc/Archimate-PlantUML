@@ -1,0 +1,50 @@
+@startuml
+left to right direction
+skinparam nodesep 4
+!include <archimate/Archimate>
+
+hide stereotype
+
+' Hide the interface boxes to only show the relationships
+<style>
+interface {
+    shadowing 0
+    backgroundcolor transparent
+    linecolor transparent
+    FontColor transparent
+}
+.junction {
+    linecolor #black
+    fontcolor #black
+}
+</style>
+
+title ArchiMate Relationships\nUsage: A [arrow] B
+rectangle "Other Relationships" as other {
+    circle "Junction Or\ncircle id" <<junction>> as c1
+    circle #black "Junction And\ncircle #black id" <<junction>> as c2
+    c1 -[hidden]- c2
+    f1 --|> f2: Specialisation\n--|>
+}
+rectangle "Dynamic Dependencies" as dynamic {
+    f3 ..>> f4: Flow\n..>>
+    f5 -->> f6: Triggering\n-->
+}
+rectangle "Dependency Relationships" as dependency {
+    f7 --\\ f8: Association_dir\n--\\
+    f9 -- f10: Association\n--
+    f11 ..> f12: Influence\n..>
+    f13 <-[dotted]-> f14: Access_rw\n<-[dotted]->
+    f15 -[dotted]-> f16: Access_w\n-[dotted]->
+    f17 <-[dotted]- f18: Access_r\n<-[dotted]-
+    f19 -[dotted]- f20: Access\n-[dotted]-
+    f21 --> f22: Serving\n-->
+}
+rectangle "Structural Relationships" as structural {
+    f23 -[dotted]-|> f24: Realization\n-[dotted]-|>
+    f25 @-->> f26: Assignment\n@-->>
+    f27 o-- f28: Aggregation\no--
+    f29 *-- f30: Composition\n*--
+}
+
+@enduml

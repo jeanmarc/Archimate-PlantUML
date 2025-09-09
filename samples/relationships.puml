@@ -1,0 +1,50 @@
+@startuml
+left to right direction
+skinparam nodesep 4
+!include <archimate/Archimate>
+
+hide stereotype
+
+' Hide the interface boxes to only show the relationships
+<style>
+interface {
+    shadowing 0
+    backgroundcolor transparent
+    linecolor transparent
+    FontColor transparent
+}
+.junction {
+    linecolor #black
+    fontcolor #black
+}
+</style>
+
+title ArchiMate Relationships\nUsage: Rel_<Relationship>(from, to, "label")
+rectangle "Other Relationships" as other {
+    Junction_Or(jo, "Junction_Or") <<junction>>
+    Junction_And(ja, "Junction_And") <<junction>>
+    Rel_Specialization(i14, j14, Specialization)
+    jo -[hidden]- ja
+}
+rectangle "Dynamic Dependencies" as dynamic {
+    Rel_Flow(i10, j10, Flow)
+    Rel_Triggering(i15, j15, Triggering)
+}
+rectangle "Dependency Relationships" as dependency {
+    Rel_Association_dir(i8, j8, Association_dir)
+    Rel_Association(i7, j7, Association)
+    Rel_Influence(i11, j11, "Influence\n+/-")
+    Rel_Access_rw(i3, j3, Access_rw)
+    Rel_Access_w(i4, j4, Access_w)
+    Rel_Access_r(i2, j2, Access_r)
+    Rel_Access(i1, j1, Access)
+    Rel_Serving(i13, j13, Serving)
+}
+rectangle "Structural Relationships" as structural {
+    Rel_Realization(i12, j12, Realization)
+    Rel_Assignment(i6, j6, Assignment)
+    Rel_Aggregation(i5, j5, Aggregation)
+    Rel_Composition(i9, j9, Composition)
+}
+
+@enduml
